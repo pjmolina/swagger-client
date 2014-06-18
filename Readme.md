@@ -1,7 +1,7 @@
-# Static Web Server #
+# Swagger Client #
 
-Static Web Server on NodeJS.
+Swagger UI.
 
 Ready to deploy on Heroku.
 
-Place your files in ```public``` folder.
+Test it at [http://swagger-client.herokuapp.com/](http://swagger-client.herokuapp.com/)
