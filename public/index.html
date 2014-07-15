@@ -17,6 +17,11 @@
   <script src='swagger-ui.js' type='text/javascript'></script>
   <script src='lib/highlight.7.3.pack.js' type='text/javascript'></script>
   <script type="text/javascript">
+	function getParameterByName(name) {
+		var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
+		return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+	}
+  
     $(function () {
       window.swaggerUi = new SwaggerUi({
       url: "http://petstore.swagger.wordnik.com/api/api-docs",
@@ -46,6 +51,18 @@
       }
     })
     window.swaggerUi.load();
+	
+	var uri = getParameterByName("uri");
+	var apiKey = getParameterByName("apiKey");
+
+	if (apiKey!=null) {
+		$('#input_apiKey').val(apiKey);
+	}
+	if (uri!=null) {
+		$('#input_baseUrl').val(uri);
+		//AutoExplore
+		$('#explore').click();
+	}
   });
 
   </script>
