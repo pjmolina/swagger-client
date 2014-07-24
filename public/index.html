@@ -44,12 +44,17 @@
 
     $('#input_apiKey').change(function() {
       var key = $('#input_apiKey')[0].value;
+	  addAuth(key);
+    })
+	
+	function addAuth(key) {
       console.log("key: " + key);
       if(key && key.trim() != "") {
         console.log("added key " + key);
         window.authorizations.add("key", new ApiKeyAuthorization("api_key", key, "query"));
       }
-    })
+	}
+	
     window.swaggerUi.load();
 	
 	var uri = getParameterByName("uri");
@@ -57,12 +62,14 @@
 
 	if (apiKey!=null) {
 		$('#input_apiKey').val(apiKey);
+		addAuth(apiKey);
 	}
 	if (uri!=null) {
 		$('#input_baseUrl').val(uri);
 		//AutoExplore
 		$('#explore').click();
 	}
+
   });
 
   </script>
